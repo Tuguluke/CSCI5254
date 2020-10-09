@@ -1,0 +1,224 @@
+%This is my super simple Real Analysis Homework template
+
+\documentclass{article}
+\usepackage[left=.8in,right=.8in,top=1in,bottom=1in]{geometry}
+\newcommand{\reals}{{\mbox{\bf R}}}
+\newcommand{\dom}{{\mbox{\bf dom}}}
+\newcommand{\var}{{\mbox{\bf var}}}
+\newcommand{\E}{{\mbox{\bf E}}}
+
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Tuguluke}
+\lhead{CSCI 5254  Homework 1}
+\rfoot{Page \thepage} 
+
+\title{CSCI 5254  Homework 1}
+\author{Tuguluke Abulitibu}
+\date\today
+%This information doesn't actually show up on your document unless you use the maketitle command below
+
+\begin{document}
+\maketitle %This command prints the title based on information entered above
+\section*{Chapter 2, Definition of convexity}
+
+\subsection*{2.11}
+\subsubsection*{2-D}
+Hyperbolic set S  =  $\{ x \in \reals^{2}_{+} \mid x_1x_2 \geq 1 \}$
+\begin{proof}
+Let  $x = (x_1, x_2)$ and $y = (y_1, y_2)$ be in set S, \\
+for $0 \leq \theta \leq 1$,\\
+\[\left(\theta x + (1- \theta)y\right) = \left(\theta x_1 + (1- \theta)y_1\right) \left(\theta x_2 + (1- \theta)y_2. \right) \]
+
+\[= \theta^2  x_1x_2 + \theta x_1 (1- \theta)y_2 +   (1- \theta)\theta y_1 x_2 + (1- \theta)^2y_1y_2\ \]
+
+\[ \ge \theta^2 + 2\theta(1-\theta)^2  \, (\mbox{by definition of S})\]
+
+\[= \cancel{\theta^2}  + \cancel{2\theta}-\cancel{2 \theta^2} + 1 -\cancel{2 \theta} + \cancel{\theta^2} = 1\]
+We showed that $\forall x = (x_1, x_2)$ and $y = (y_1, y_2) \in S,$ and any $\theta$ with $0 \leq \theta \le 1$\\
+$ \left(\theta x + (1- \theta)y\right) $ was also in set S, hence convex.
+\end{proof}
+\subsubsection*{n-D}
+Hyperbolic set S  =  $\{ x \in \reals^{n} \mid \Pi^{n}_{i=1} x_i \geq 1 \}$
+\begin{proof}
+Let  $(x_1, x_2, \dots, x_n)$ and$(y_1, y_2, \dots, y_n)$ be in set S, \\
+for $0 \leq \theta \leq 1$,\\
+\[ \Pi^{n}_{i=1} [\theta x_i + (1-\theta) y_i]\]
+
+\[ \ge \Pi^{n}_{i=1} [ x_i^{\theta} y_i^{(1-\theta)}] \, (\mbox{by hint } a^\theta b^{1-\theta} \le \theta a + (1 - \theta)b )\]
+
+\[ = \Pi^{n}_{i=1} [ x_i^{\theta}] \Pi^{n}_{i=1}[y_i^{(1-\theta)}] \]
+
+\[ \ge 1 \time 1  = 1 \, (\mbox{by definition of S}) \]
+We showed that  $\forall x_i$ and $y_i \in S,$ and  any $\theta$ with $0 \leq \theta \le 1$\\
+$\theta x_i + (1-\theta) y_i$ was also in set S, hence convex.
+\end{proof}
+
+\subsection*{2.12(c, e, f, g)}
+\subsubsection*{c}
+Wedge set S  =  $\{ x \in \reals^{n} \mid a^{T}_1 x \le b_1, a^{T}_2 x \le b_2\}$
+\begin{proof}
+Let $x_1, x_2$ be in set S,\\
+for $0 \leq \theta \leq 1$,\\
+\[a^{T}_1[\theta x_1 + (1-\theta)x_2 ] = a^{T}_1[\theta x_1]  + a^{T}_1[ (1-\theta)x_2] \]
+
+\[  = \theta a^T_1 x_1 + a^T_1 - \theta a^T_1x_2 \]
+
+\[ \le \cancel{\theta b_1} + b_1 - \cancel{\theta b_1}\, (\mbox{by definition of S})\]
+the same can be apply to
+\[a^{T}_1[\theta x_1 + (1-\theta)x_2 ]  \le b_2.\]
+We showed that  $\forall x_1$ and $x_2 \in S,$ and any  $\theta$ with $0 \leq \theta \le 1$\\
+$\theta x_1 + (1-\theta) x_2$ was also in set S, hence convex.
+\end{proof}
+\subsubsection*{e}
+This not convex.
+Counter example:
+\begin{figure}[h]
+\begin{center}
+  \includegraphics[width=.4\linewidth]{convex.png}
+\end{center}
+\end{figure}
+\subsubsection*{f}
+\begin{proof}
+Let $y \in S_2$, since $S_1$ is convex, then $S_1\setminus y$ is convex $\forall y \in S_2$
+\[ \{x \mid  x  + S_2 \subseteq  S_1\}  =\cap_{y \in S_2} \{S_1 \setminus  y \}\]
+Which is convex, since convexity is preserved by intersection.
+\end{proof}
+\subsubsection*{g}
+\begin{proof}
+Aproach 1: \\
+Let  $x_1$ and $x_2$ be in set $S = \{x \mid \left\Vert x - a \right\Vert_2 \le \theta \left\Vert x - b \right\Vert_2\}$, \\
+for $0 \leq \alpha \leq 1$,\\
+
+ \[\left\Vert \alpha x_1 + (1- \alpha ) x_2 -a \right\Vert_2  = \left\Vert \alpha x_1 +x_2 - \alpha x_2 -a  -\alpha a + \alpha a\right\Vert_2\]
+ \[ = \left\Vert \alpha x_1  -\alpha a +x_2  -a - \alpha x_2  + \alpha a\right\Vert_2 \le  \left\Vert \alpha x_1  -\alpha a \right\Vert_2 +\left\Vert  x_2  -a  \right\Vert_2 - \left\Vert  \alpha x_2  -  \alpha a\right\Vert_2 \]
+ \[\le \alpha\theta \left\Vert  x_1  - b \right\Vert_2 +\left\Vert  x_2  -b  \right\Vert_2 - \alpha\theta \left\Vert  x_2  -   b\right\Vert_2  \le \footnote{ With some trig inequality plus perturbation, we should be getting this step, but I failed to do that, so we will have to use Office Hour's suggestion, which is Approach 2} \theta [\alpha \left\Vert x_1 - b\right\Vert_2  + (1- \alpha )\left\Vert x_1 - b\right\Vert_2] \]
+ We showed that  $\forall x_1$ and $x_2 \in S,$ and any  $\alpha$ with $0 \leq \alpha \le 1$\\
+$\theta x_1 + (1-\alpha) x_2$ was also in set $S$, hence convex.\\
+
+Approach 2: Square both side of  set $ \{x \mid \left\Vert x - a \right\Vert_2 \le \theta \left\Vert x - b \right\Vert_2\}$, we have $\{x \mid \left\Vert x - a \right\Vert_2^2 \le \theta \left\Vert x - b \right\Vert_2^2\}$\\
+If $\theta = 1$, then it is a halfspace, hence  convex.\\
+If $0 \le \theta < 1$, then it is equivalent to\footnote{Textbook page 97},
+\[ \{x \mid (1 - \theta^2)x^Tx - 2(a - \theta^2b)^Tx + \theta^T\theta - \theta^2b^Tb \le 0 \}\]
+by the look it, it actually is a ball, hence convex.
+
+
+ \end{proof}
+\subsection*{2.14}
+\subsubsection*{a}
+\begin{proof}
+Let $x_1, x_2$ be in set $S_a$,\\
+for $0 \leq \theta \leq 1$,\\
+\[\inf_{y \in S} \left\Vert \theta x_1 + (1-\theta) x_2 -y \right\Vert\]
+
+\[ = \inf_{y \in S} \left\Vert \theta x_1 +x_2 -\theta x_2 -y \right\Vert = \inf _{y \in S}\left\Vert \theta x_1 +x_2 -\theta x_2 -y + \theta y -\theta y\right\Vert = \inf_{y \in S} \left\Vert \theta x_1+ \theta y  +x_2 -y  -\theta x_2  -\theta y\right\Vert  \]
+
+\[\le  \inf_{y \in S} \left\Vert \theta x_1+ \theta y \right\Vert   +\inf_{y \in S} \left\Vert x_2 -y  \right\Vert -  \inf_{y \in S} \left\Vert  \theta x_2  + \theta y\right\Vert \, (\mbox{by Triangle inequality})  \]
+
+\[\le \cancel{\theta a}  + a - \cancel{\theta a }  =a  \, (\mbox{by definition  of $S_a$)} \]
+We showed that  $\forall x_1$ and $x_2 \in S_a,$ and any  $\theta$ with $0 \leq \theta \le 1$\\
+$\theta x_1 + (1-\theta) x_2$ was also in set $S_a$, hence convex.
+\end{proof}
+\subsubsection*{b}
+\begin{proof}
+
+Let $x_1, x_2$ be in set $S_{-a}$, and $y \in S$\\
+for $0 \leq \theta \leq 1$, and y $y \in S$\\
+
+\[\left\Vert y  - (\theta x_1 + (1- \theta) x_2)\right\Vert  =  \left\Vert y  - \theta x_1 -x_2 +  \theta x_2   + \theta y - \theta y \right\Vert\]
+
+\[\le \left\Vert y - x_2 \right\Vert + \theta \left\Vert y  - x_1 \right\Vert - \theta \left\Vert y  - x_1\right\Vert  \, (\mbox{by Triangle inequality})\]
+
+\[\le a + \cancel{\theta a} - \cancel{\theta a } = a \, (\mbox{by definition  of $S_{-a}$)} \]
+We showed that  $\forall x_1$ and $x_2 \in S_{-a},$ and any  $\theta$ with $0 \leq \theta \le 1$\\
+$\theta x_1 + (1-\theta) x_2$ was also in set $S_{-a}$, hence convex.
+\end{proof}
+
+\newpage
+\subsection*{2.15 (a, b, f, g)}
+We use $S  = \cap \{\mathcal{H} \mid \mathcal{H} \mbox{ halfspace }, S \subseteq  \mathcal{H} \} \footnote{ Text book page 36}$
+\subsubsection*{a}
+\begin{proof}
+Since
+\begin{itemize} 
+\item $p_i$ is halfspace (hence convex) 
+\item $f(a_i) : \reals \to \reals$ (hence constant real). 
+\item $\alpha \le \sum^{n}_{i = 1} p_i f(a_i) \le \beta $, which is  closed and bounded( hence converge).
+ \end{itemize}
+ Thus, linear combinations of halfspace, we showed that it is convex.
+\end{proof}
+\subsubsection*{b}
+\begin{proof}
+Similar to part (a) with $p_i \le \beta $. \\
+Thus,  a  halfspace with convergnece, we showed that it is convex.
+\end{proof}
+\subsubsection*{f}
+\[\var(x)  = \E(x  - \E x)^2  =  \E x^2  - (\E x)^2 =  \sum^{n}_{i = 1} p_i x^2 - ( \sum^{n}_{i = 1} p_i x )^2=  \sum^{n}_{i = 1} p_i a_i^2 - ( \sum^{n}_{i = 1} p_i a_i )^2 \]
+here we consider $p_i$ as coefficient, we have  $ - ( \sum^{n}_{i = 1} p_i a_i )^2  + \sum^{n}_{i = 1} p_i a_i^2 \le \alpha$, that is 
+\[ \frac{( \sum^{n}_{i = 1} p_i a_i )^2}{\alpha}  - \frac{\sum^{n}_{i = 1} p_i a_i^2}{\alpha} \ge 1\]
+this is the complement of an ellipsoid function (which is convex), hence not convex.  \\
+Counter example: $a = (-1, 1), p = (0,1) \mbox{ and } (1,0)$ vs mid point $ p = (1/2, 1/2)$.
+\subsubsection*{g}
+\begin{proof}
+Similar to  part (f), we have 
+\[ \frac{( \sum^{n}_{i = 1} p_i a_i )^2}{\alpha}  - \frac{\sum^{n}_{i = 1} p_i a_i^2}{\alpha} \le 1\]
+this can be tranformed into standard Ellipsoid format
+\[ \frac{( \sum^{n}_{i = 1} [p_i  - \hat{X(a_i)}] )^2}{\hat{\beta}}   \le 1\]
+it is in a closed ellipsoid, hence convex.
+\end{proof}
+\newpage
+\section*{Chapter 2, Operations that preserve convexity}
+
+\subsection*{2.19 (a, b)}
+\subsubsection*{a}
+half space set C  =  $\{ y   \mid g^Ty \le h \} (g \ne 0)$\\
+Since $f^{-1} (C)= \{ x \in \dom f \mid f(x) \in C\}$, and $f(x) = \frac{Ax +b}{c^Tx + d} (c^Tx + d > 0)$, plug them back into C, we have 
+\[f^{-1} (C)= \{ x \in \dom f \mid g^Tf(x) \le h\}\]
+\[ \Rightarrow f^{-1} (C)= \{ x \in \dom f \mid g^Tf(x) \le h\} \Rightarrow f^{-1} (C)= \{ x \in \dom f \mid g^T \frac{Ax +b}{c^Tx + d}  \le h\}  ( \mbox{where } c^Tx + d > 0) \]
+\[\Rightarrow f^{-1} (C)= \{ x \in \dom f \mid g^T (Ax +b)   \le h( c^Tx + d)\} = \{ x \in \dom f \mid g^TAx  - h c^Tx    \le hd - g^Tb\} \]
+\[ \Rightarrow  f^{-1} (C)= \{ x \in \dom f \mid (A^Tg - ch^T)^Tx    \le (hd - g^Tb) \} \]
+Which shows that $f^{-1} (C)$ is another $\bf{halfspace}$.
+\subsubsection*{b}
+Similar to part (a), we plug known conditions into definition of polyhedron,
+\[f^{-1} (C)= \{ x \in \dom f \mid f(x) \in C\} \Rightarrow f^{-1}(C)= \{ x \in \dom f \mid G\frac{Ax +b}{c^Tx + d}  \preceq h  \} ( \mbox{where } c^Tx + d > 0) \]
+\[\Rightarrow f^{-1}(C)= \{ x \in \dom f \mid GAx +G b \preceq h(c^Tx + d)   \Rightarrow f^{-1}(C)= \{ x \in \dom f \mid GAx - h c^Tx \preceq   hd -G b) \} \]
+\[ \Rightarrow f^{-1}(C)= \{ x \in \dom f \mid (GA - h c^T)x \preceq   (hd -Gb) \} \]
+Which shows that $f^{-1} (C)$ is another $\bf{polyhedron}$.
+
+\section*{Chapter 2, Convex cones and generalized inequalities}
+
+\subsection*{2.33 (a)}
+\begin{proof}
+1. Convex:\\
+Let  $(x_1, x_2, \dots, x_n)$ and$(y_1, y_2, \dots, y_n)$ be in set $K_{m+}$, \\
+for $0 \leq \theta \leq 1$, 
+\[\theta x_1 \ge \theta x_2 \ge \dots  \ge \theta x_n \ge 0\]
+\[\theta (1 -\theta)y_1 \ge (1 -\theta)y_2  \ge \dots  \ge(1 -\theta) y_n \ge 0. \]
+thus, by combination of the above
+\[\theta x_1+ \theta (1 -\theta)y_1 \ge \theta x_2 + (1 -\theta)y_2  \ge \dots  \ge \theta x_n (1 -\theta) y_n \ge 0. \]
+We showed that  $\forall x_i$ and $y_i \in K_{m+},$ and for any $0 \leq \theta \le 1$\\
+$\theta x_i + (1-\theta) y_i$ was also in set $K_{m+}$, hence convex.\\
+2. Closed:\\
+Since $x_1 \ge  x_2 \ge \dots  \ge x_n \ge 0$,
+it can only be $x_1 =  x_2 =\dots = x_n = 0$ when $\lambda  = 0$, and it includes $0$, hence closed\\
+3. Solid:\\
+Obviously there is only nonempty interior since when $\lambda > 0$, there is only $> 0$, hence solid.\\
+4. Pointed (no line):\\
+From 2 and 3 we know that $\lambda$ is nonnegative, hence pointed.\\
+Summing all 4 properties, we showed that $K_{m+}$ is a proper cone.
+\end{proof}
+
+%Section and subsection automatically number unless you put the asterisk next to them.
+
+
+\end{document}
