@@ -1,0 +1,276 @@
+%This is my super simple Real Analysis Homework template
+
+\documentclass{article}
+\usepackage[left=.8in,right=.8in,top=1in,bottom=1in]{geometry}
+\newcommand{\reals}{{\mbox{\bf R}}}
+\newcommand{\dom}{{\mbox{\bf dom}}}
+\newcommand{\var}{{\mbox{\bf var}}}
+\newcommand{\E}{{\mbox{\bf E}}}
+\newcommand{\tr}{{\mbox{\bf tr}}}
+\newcommand{\prob}{{\mbox{\bf prob}}}
+
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Tuguluke}
+\lhead{CSCI 5254  Homework 2}
+\rfoot{Page \thepage} 
+
+\title{CSCI 5254  Homework 2}
+\author{Tuguluke Abulitibu}
+\date\today
+%This information doesn't actually show up on your document unless you use the maketitle command below
+
+\begin{document}
+\maketitle %This command prints the title based on information entered above
+\section*{Chapter 3, Definition of convexity}	
+\subsection*{3.1}
+\subsubsection*{(a)}
+This is just another form of Jensen's inequality
+\[f(\theta x + (1- \theta)y) \le \theta f(x) + (1- \theta)f(y)\]
+let $\theta  = \dfrac{b-x}{b-a}$, then $1 - \theta  = \dfrac{x-a}{b-a}$, and let $x = a, y = b$ in Jensen's inequality, we will have 
+\[f(x) \le  \dfrac{b-x}{b-a} f(a) + \dfrac{x-a}{b-a}f(b)\]
+\subsubsection*{(b)}
+From part (a),  we will see
+\[\dfrac{f(x)- f(a)}{x -a } \le \dfrac{\dfrac{b-x}{b-a} f(a) + \dfrac{x-a}{b-a}f(b)- f(a)}{x -a } \]
+\[ = \dfrac{x(f(b) - f(a)) - a (f(b) - f(a))}{(b-a)(x-a)} = \dfrac{f(b) - f(a)}{b-a}\]
+Same would be apply for the second part
+\[\dfrac{f(b)- f(x)}{b -x } \ge \dfrac{f(b)- f\dfrac{b-x}{b-a} f(a) - \dfrac{x-a}{b-a}f(b)}{b -x } \]
+\[ = \dfrac{b(f(b) - f(a)) - x (f(b) - f(a))}{(b-a)(b-x)} = \dfrac{f(b) - f(a)}{b-a}\]
+Combining both, we would have 
+\[\dfrac{f(x)- f(a)}{x -a } \le \dfrac{f(b) - f(a)}{b-a} \le \dfrac{f(b)- f(x)}{b -x } \]
+
+\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=0.21\textheight,width=.8\linewidth]{slope.png}
+  \caption{My original draw, based on sign of the slopes}
+
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=0.21\textheight,width=.8\linewidth]{CHEN.png}
+  \caption{Homework session: a better one with triangle}
+
+\end{minipage}
+\end{figure}
+
+
+\newpage
+\subsubsection*{(c)}
+Since  $a \le x \le b$, and from part (b) we have $\dfrac{f(x)- f(a)}{x -a } \le \dfrac{f(b) - f(a)}{b-a}$, by the definition of the limit, we have
+\[f'(a) = \lim_{x \to a} \dfrac{f(x)- f(a)}{x -a }\le \dfrac{f(b) - f(a)}{b-a}\]
+similarly:
+\[f'(b) = \lim_{x \to b} \dfrac{f(x)- f(b)}{x -b }\ge \dfrac{f(b) - f(a)}{b-a}\]
+Combining both, we would have 
+\[f'(a) \le \dfrac{f(b) - f(a)}{b-a} \le f'(b)\]
+\subsubsection*{(d)}
+From part (c), we have $f'(b) \ge f'(a) \Rightarrow f'(b) - f'(a) \ge 0 $, also $b - a \> 0$ by definition of the problem, combine them both, we have $\dfrac{f'(b) - f'(a)}{b-a} \ge 0$. Again we can say this is the definition of second order derivative, hence
+\[f''(a) \ge 0, \, f''(b) \ge 0\]
+\section*{Chapter 3, Examples}	
+\subsection*{3.15}
+\subsubsection*{(a)}
+\[\lim_{\alpha \to 0}u_{\alpha}(x) = \lim_{\alpha \to 0}\dfrac{x^{\alpha} - 1}{\alpha} =\footnote{L'Hôpital's rule} \lim_{\alpha \to 0} \dfrac{\ln x \times x^{\alpha} }{1} = \ln x.\]
+\subsubsection*{(b)}
+Let's look at the first derivative 
+\[u'_{\alpha}(x) = \dfrac{\alpha^2 x^{\alpha -1}}{\alpha}  =\alpha x^{\alpha -1}\]
+since $0 < \alpha \le 1$ and $\dom u_0 = \reals_{++}$, we have $u'_{\alpha}(x)  > 0$, this means the function is monotone increase. Now the second derivative
+\[u''_{\alpha}(x) =  =\alpha(\alpha -1) x^{\alpha -1} \le 0\]
+which means $-u''_{\alpha}(x) \ge 0$, hence $-u_{\alpha}$ is convex, this shows that $u_{\alpha}$ is concave. Finally it is really easy to see $u_{\alpha} (1) = \dfrac{1 - 1}{\alpha} = 0$ 
+
+\subsection*{3.16}
+We calculate the hessian and see if it is PSD by definition\footnote{${\displaystyle M{\text{ positive semi-definite}}\quad \iff \quad x^{\textsf {T}}Mx\geq 0{\text{ for all }}x\in \mathbb {R} ^{n}}$}. Let vector $\begin{bmatrix}
+a& b
+\end{bmatrix}$ be an arbitrary non-zero vector in this case 
+\subsubsection*{(b)}
+\[ \nabla^2 f(x_1, x_2) = \begin{bmatrix}
+0 & 1  \\
+1 & 0 
+\end{bmatrix}\]
+since 
+\[\begin{bmatrix}
+a& b
+\end{bmatrix}\begin{bmatrix}
+0 & 1  \\
+1 & 0 
+\end{bmatrix}\begin{bmatrix}
+a   \\
+b 
+\end{bmatrix} = \begin{bmatrix}
+b& a
+\end{bmatrix}\begin{bmatrix}
+a   \\
+b 
+\end{bmatrix}  = 2ab\]
+Since it can be any number, hence $f(x_1,x_2 )$ is neither convex nor concave.
+\subsubsection*{(c)}
+\[ \nabla^2 f(x_1, x_2) = \begin{bmatrix}
+\dfrac{2}{x_2x_1^3} & \dfrac{1}{x_1^2x_2^2}  \\
+ \dfrac{1}{x_1^2x_2^2} & \dfrac{2}{x_1x_2^3}
+\end{bmatrix}\]
+since 
+\[\begin{bmatrix}
+a& b
+\end{bmatrix}\begin{bmatrix}
+\dfrac{2}{x_2x_1^3} & \dfrac{1}{x_1^2x_2^2}  \\
+ \dfrac{1}{x_1^2x_2^2} & \dfrac{2}{x_1x_2^3}
+\end{bmatrix}\begin{bmatrix}
+a   \\
+b 
+\end{bmatrix} = \dfrac{2a^2}{x_2x_1^3} + \dfrac{2ab}{x_1^2x_2^2}+ \dfrac{2b^2}{x_1x_2^3} \ge 0 \,\, \forall a,b \in \reals\]
+Hence\footnote{From homework session: the determinant of the middle matrix is $\dfrac{4}{x_1^2x_2^2}. - \dfrac{1}{x_1^2x_2^2} \ge 0$, which means PSD.} we know  $f(x_1,x_2 )$ is convex but not concave.
+\subsubsection*{(e)}
+\[ \nabla^2 f(x_1, x_2) = \begin{bmatrix}
+\dfrac{2}{x_2} & \dfrac{-2x_1}{x_2^2}  \\
+ \dfrac{-2x_1}{x_2^2}& \dfrac{2x_1^2}{x_2^2}
+\end{bmatrix}\]
+since 
+\[\begin{bmatrix}
+a& b
+\end{bmatrix}\begin{bmatrix}
+\dfrac{2}{x_2} & \dfrac{-2x_1}{x_2^2}  \\
+ \dfrac{-2x_1}{x_2^2}& \dfrac{2x_1^2}{x_2^2}
+\end{bmatrix}\begin{bmatrix}
+a   \\
+b 
+\end{bmatrix} = \dfrac{2a^2}{x_2^2} - \dfrac{4abx_1}{x_2^2} + \dfrac{2b^2x_1^2}{x_2^2} 
+ \ge 0\footnote{ Triangle inequality: $(\dfrac{\sqrt{2}a}{x_2})^2 + (\dfrac{\sqrt{2}bx_1}{x_2})^2 \ge \dfrac{4abx_1}{x_2^2}$} \,\, \forall a,b \in \reals\]
+Hence we know  $f(x_1,x_2 )$ is convex but not concave.
+\subsection*{3.18}
+Adaptation of Log-determinant on page 74.
+\subsubsection*{(a)}
+\emph{Approach 1: }
+\[g(t) = \tr(Z + tV)^{-1}\]
+\[= \tr [Z^{1/2}( I + tZ^{-1/2}VZ^{-1/2})Z^{1/2}]^{-1} \]
+\[= \sum_{i=1}^{n}(1+ t\lambda_i)^{-1}\cdot \tr  Z^{-1} \footnote{Trace of a matrix is the sum of its eigenvalues} \]
+where $\lambda_1, \ldots, \lambda_n$ are eigenvalues of $Z^{1/2}V^{-1}Z^{1/2}$, therefore we have
+\[g'(t) = -\sum_{i=1}^{n}\dfrac{\lambda_i}{(1+t\lambda_i)^2}\tr(Z^{-1}), \; g''(t) = \sum_{i=1}^{n}\dfrac{2\lambda_i^2}{(1+t\lambda_i)^3}\tr(Z^{-1}) \mbox{ where } \tr(Z^{-1}) > 0 \]
+Here, with some special t,  $g''(t) \ge 0$, we have $f(X)$ as convex. Which is a bit not clear. So I mimic Prof's solution.\\
+\emph{Approach 2: }
+\[g(t) = \tr(Z + tV)^{-1}\]
+\[= \tr [Z^{-1}(Q(I + t\Sigma)Q^T)^{-1}] \mbox{ where(through diagonalize) } Z^{-1/2}VZ^{1/2} = Q\Sigma Q^T \]
+\[= \tr [\overbrace{Q^TZ^{-1}Q}^{A} (I + t\Sigma)^{-1}] = \tr (A(I + t\Sigma)^{-1}) = \sum_{i}\underbrace{A_{ii}}_{x_1}\underbrace{\dfrac{1}{1+ t\lambda_i}}_{x_2}\]
+Linear functions, hence Convex.
+\subsubsection*{(b)}
+\[g(t) = (\det (Z + tV))^{1/n} = (\det(Z^{1/2}(I + tZ^{-1/2}Vz^{-1/2})z^{1/2}))^{1/n}\]
+\[(\det(Z^{1/2}))^{1/n}\det(I + tZ^{-1/2}VZ^{-1/2}))^{1/n}(\det(Z^{1/2}))^{1/n} =(\prod_{i=1}^{n}(1+ t\lambda_i))^{1/n} (\det(Z^{1}))^{1/n}\footnote{Determinant of A is equal to the product of its eigenvalues}\]
+where $\lambda_1, \ldots, \lambda_n$ are eigenvalues of $Z^{1/2}V^{-1}Z^{1/2}.$\\
+From text book page 73: The geometric mean $f(x) = (\prod_{i=1}^{n}(x_i)^{1/n} $ is convex on $\dom f = \reals^n_{++}$, and $(\det(Z^{1}))^{1/n} \ge 0$, hence concave.
+\subsection*{3.19}
+Continuation of Example 3.6 on page 80
+\subsubsection*{(a)}
+we can rewrite 
+\[f(x) = \alpha_1x_{[1]} +\alpha_2x_{[2]}  + \cdots \alpha_rx_{[r]} = \alpha_r(x_{[1]} +x_{[2]}+ \cdots x_{[r]})  + (\alpha_{r-1} - \alpha_r )(x_{[1]} +x_{[2]}+ \cdots x_{[r-1]})  + \cdots + (\alpha_{1} - \alpha_2)x_{[1]}\]
+From the hint we already know that $f(x) = \sum_{i = 1}^kx_{[i]}$ is convex, and all the coefficient above $(\alpha_{k-1} - \alpha_k) \ge 0$.\\
+Linear combination of convex functions with nonnegative coefficients, hence $f(x) = \sum_{i = 1}^r\alpha_{i}x_{[i]} $ is convex.
+\subsection*{3.22}
+\subsubsection*{(b)}
+Solution is already in the hint.
+\[f(x,u,v) = -\sqrt{uv - x^Tx} = -\sqrt{u(v - \dfrac{x^Tx}{u})}\]
+Let $x_1 = u$ and $x_2 = v - \dfrac{x^Tx}{u} $, by the definition of composition $f(x) = h(g(x))$, in this case: 
+\[h = \sqrt{x_1x_2}, \, \mbox{convex and nonincreasing}\]
+and 
+\[g(x) = \begin{cases}
+            g(x_1)  = u & \mbox{concave and convex} \\
+            g(x_2) = v - \dfrac{x^Tx}{u}  &  \mbox{concave since} \dfrac{x^Tx}{u} \mbox{is convex}
+        \end{cases}\]
+        by (3.10) on page 84: 
+\begin{itemize}
+\item f is convex of h is convex and nonincreasing, and g is concave.
+\end{itemize}
+        We have $f(x,u,v) $ is convex.
+\subsubsection*{(c)}
+From part (b) we know that $f(x,u,v) = -\sqrt{uv - x^Tx} = -\sqrt{u(v - \dfrac{x^Tx}{u})}$ is convex. We also know from Example 3.13 from page 86 that:
+\begin{itemize}
+\item If g is convex then $ - \log(-g(x))$ is convex on $\{x \mid g(x) \le 0\}$
+\end{itemize}
+in this case $g = -\sqrt{uv - x^Tx} = -\sqrt{u(v - \dfrac{x^Tx}{u})}$, taking the log of $-g$, we have 
+\[\dfrac{1}{2} \log (uv - x^Tx)\]
+hence$-\dfrac{1}{2} \log (uv - x^Tx)$ is convex. Multiplying by a positive constant 2 will not change the convexity.\\
+We showed  that $-\log (uv - x^Tx)$ is convex.
+\subsection*{3.24}
+\subsubsection*{(c)}
+From HW1: 2.15, and from homework session:
+\[f(p) = \prob (\alpha \le x \le \beta) = \sum_{k = i}^{j}p_k \mbox{ where } i  =\min\{k \mid \alpha_k \ge \alpha\}, \, j  =\max\{k \mid \alpha_k \le \beta\}  \]
+we can easily find the corresponding $k$ s.t. $\alpha_k \ge \alpha$ and $\alpha_k \le \beta$. \\
+Therefore $f(p) =  \sum_{k = i}^{j}p_k$ is finite combinations of linear function\footnote{Linear function is 'everything'}, hence convex, quasiconvex, concave, quasiconcave.
+\subsubsection*{(h):Only	show	that	the	function	is	quasiconcave}
+$f$ is quasiconcave if  $(1) \, \dom f $ is convex, and $(2)$ superlevel sets $C_\alpha  = \{ x \in \dom f \mid f(x) \ge \alpha \}$ are convex.\\
+\[f(p) = \inf \{\beta - \alpha \mid \prob (alpha \le x \le \beta) \ge 0.9\} \ge \gamma\footnote {$\gamma$ is the range}\]
+This is equivalent to 
+\[\sum_{k = i}^{j}p_k \le 0.9,  \forall i,j  \mbox{ s.t. } \alpha_j - \alpha_i  \le \gamma\]
+From part (a), we know we can easily find the corresponding $k$ s.t. $\alpha_k \ge \alpha$ and $\alpha_k \le \beta$, which satisfies the superlevel set 
+\[S_r = \{p \mid f(p) \ge \gamma\}\]
+hence $\inf \{ \beta = \alpha \mid \prob(\alpha \le x \le \beta ) \ge 0.9\}$ is quasiconcave.
+\section*{Chapter 3, Conjugate functions}	
+\subsection*{3.26}
+\subsubsection*{(a)}
+The answer is in the hint:
+\[\sum_{i = 1}^{k}\lambda_i(X)  = \sup \{ \tr (V^TXV) \mid V \in \reals^{n \times k}, V^TV = I\}\]
+since 
+\[ \tr (V^TXV) = \tr \begin{bmatrix}
+(v_1)^Tx_{11}v_1 & & \\
+ & \ddots& \\
+ &&(v_k)^Tx_{ii}v_k
+\end{bmatrix} = \sum_{i =1}^k(v_i)^Tx_{ii}v_i\]
+Similar to Example 3.10 from page 82, we know that $f(x) = \sum_{i = 1}^{k}\lambda_i(X)$  is the pointwise supremum of a family of linear function of $X$, hence convex.
+\subsection*{3.36}
+\subsubsection*{(a)}
+\[f^*(y) = \sup_{x \in \reals^n} (y^Tx - f(x))  = \sup_{x \in \reals^n} (\sum_{i=1}^ny_ix_i - \max_{i = 1,\ldots, n}x_i)\]
+consider:
+\begin{itemize}
+\item if $y_i < 0$, then $f^{*}(y)  = \infty$ for some negative $x_i$ 
+\item if $y_i \ge 0$ and $\sum_{i=1}^ny_i >1$, then $f^{*}(y)  = \infty$ for some positive $x_i$ 
+\item if $y_i \ge 0$ and $\sum_{i=1}^ny_i <1$, then $f^{*}(y)  = \infty$ for some negative $x_i$ 
+\item if $y_i \ge 0$ and $\sum_{i=1}^ny_i =1$, then $ f^{*}(y) = \sum_{i=1}^ny_ix_i -  \max_{i = 1,\ldots, n}x_i = 0$ 
+\end{itemize}
+this is an idicator function 
+\[  f^{*}(y) = \begin{cases}
+            0 & \mbox{if } \sum_{i=1}^ny_i =1 \\
+            \infty &  \mbox{otherwise.}
+        \end{cases}\]
+
+
+\subsubsection*{(d)}
+\[f^*(y) = \sup_{x \in \reals^n} (y^Tx - f(x))  = \sup_{x \in \reals^n} (\sum_{i=1}^ny_ix_i - x^p)\]
+here, $(yx - x^p)' = 0 \Rightarrow x = (\dfrac{y}{p})^{\dfrac{1}{p-1}}$, plug it back in, we would have $y(\dfrac{y}{p})^{\dfrac{1}{p-1}} - (\dfrac{y}{p})^{\dfrac{p}{p-1}}$\\
+when $p >1$, consider:
+\begin{itemize}
+\item if $y_i < 0$, then $f^{*}(y)  = 0$ for large $p$
+\item if $y_i = 0$, then $f^{*}(y)  = 0$
+\item if $y_i > 0$, then  $f^{*}(y)  = y(\dfrac{y}{p})^{\dfrac{1}{p-1}} - (\dfrac{y}{p})^{\dfrac{p}{p-1}}$
+\end{itemize}
+Hence
+\[  f^{*}(y) = \begin{cases}
+            0 & \mbox{if } y_i \le  0 \\
+            y(\dfrac{y}{p})^{\dfrac{1}{p-1}} - (\dfrac{y}{p})^{\dfrac{p}{p-1}} &  \mbox{otherwise.}
+        \end{cases}\]
+when $p < 0$, consider: 
+\begin{itemize}
+\item if $y_i < 0$, then  $f^{*}(y)  = y(\dfrac{y}{p})^{\dfrac{1}{p-1}} - (\dfrac{y}{p})^{\dfrac{p}{p-1}}$
+\item if $y_i = 0$, then $f^{*}(y)  = 0$
+\item if $y_i > 0$, then $f^{*}(y)  = \infty$, unbounded
+\end{itemize}
+Hence
+\[  f^{*}(y) = \begin{cases}
+            0 & \mbox{if } y_i =  0 \\
+            y(\dfrac{y}{p})^{\dfrac{1}{p-1}} - (\dfrac{y}{p})^{\dfrac{p}{p-1}} &  \mbox{ if } y_i < 0
+        \end{cases}\]
+
+
+
+
+%Section and subsection automatically number unless you put the asterisk next to them.
+
+
+\end{document}
