@@ -5,7 +5,7 @@ Course Link: https://spot.colorado.edu/~lich1539/cvxopt.html
 
 Openbook: https://web.stanford.edu/~boyd/cvxbook/
 
-Standford Template: https://see.stanford.edu/Course/EE364A
+Stanford Template: https://see.stanford.edu/Course/EE364A
 
 LaTeX Templates: https://web.stanford.edu/class/ee364b/latex_templates/
 
