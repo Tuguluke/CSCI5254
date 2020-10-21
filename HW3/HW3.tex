@@ -1,0 +1,369 @@
+%This is my super simple Real Analysis Homework template
+
+\documentclass{article}
+\usepackage[left=.8in,right=.8in,top=1in,bottom=1in]{geometry}
+\newcommand{\reals}{{\mbox{\bf R}}}
+\newcommand{\dom}{{\mbox{\bf dom}}}
+\newcommand{\var}{{\mbox{\bf var}}}
+\newcommand{\E}{{\mbox{\bf E}}}
+\newcommand{\tr}{{\mbox{\bf tr}}}
+\newcommand{\prob}{{\mbox{\bf prob}}}
+
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Tuguluke}
+\lhead{CSCI 5254  Homework 3}
+\rfoot{Page \thepage} 
+
+\title{CSCI 5254  Homework 3}
+\author{Tuguluke Abulitibu}
+\date\today
+%This information doesn't actually show up on your document unless you use the maketitle command below
+
+\begin{document}
+\maketitle %This command prints the title based on information entered above
+\section*{Chapter 4, Basic terminology and optimality conditions}	
+\subsection*{4.1}
+\begin{figure}[h]
+\begin{center}
+  \includegraphics[width=.4\linewidth]{epi.png}
+\end{center}
+\end{figure}
+\begin{center}
+    \begin{tabular}{ | l | l | l |}
+    \hline
+    Functions & Optimal set   & Optimal value  \\ \hline
+        $ f_0(x_1, x_2) = x_1 + x_2$ &  $X_{opt} =  \{(2/5, 1/5)\}$ & $p^*   = 3/5$  \\ \hline
+    $ f_0(x_1, x_2) = -x_1 - x_2$ &  DNE & $p^*   =  -\infty$  \\ \hline
+        $ f_0(x_1, x_2) = x_1 $ & $X_{opt} =  \{(0, x_2) \mid x_2 \ge 1\} $ &  $p^*  = 0$ \\ \hline
+            $ f_0(x_1, x_2) = max \{x_1, x_2\}$ &  $X_{opt} =  \{(1/3, 1/3)\}$ & $p^*   = 1/3$   \\ \hline
+                $ f_0(x_1, x_2) = x_1^2 + 9x_2^2$ & $X_{opt} =  \{ (3/6, 1/6)\}$ &  $p^* = 1/2$ \\ \hline
+
+        \end{tabular}
+\end{center}
+
+  \subsubsection*{(a) $ f_0(x_1, x_2) = x_1 + x_2$}      
+  By solving the system of equation, we get one of the vertexes:
+\[ \begin{cases}
+            2x_1 + x_2 = 1 \\
+            x_1 + 3x_2 = 1
+        \end{cases} \Rightarrow
+        \begin{cases}
+            x_1 = 2/5 \\
+           x_2 = 1/5
+        \end{cases}  \]
+        So $x^* = (2/5, 1/5) $, $p^* = 2/5+  1/5  = 3/5$.
+    \subsubsection*{(b) $ f_0(x_1, x_2) = -x_1 - x_2$}      
+ Flip part (a), we got unbound below.
+  \subsubsection*{(c) $ f_0(x_1, x_2) = x_1 $}      
+This one is along the $x_2$ axis of the feasible set. 
+  \subsubsection*{(d) $ f_0(x_1, x_2) = max \{x_1, x_2\}$}      
+  (d) and (e) are solved by drawing isolines.
+   \[ \begin{cases}
+             x_1= x_2 \\
+            x_1 + 3x_2 = 1
+        \end{cases} \Rightarrow
+        \begin{cases}
+            x_1 = 1/4 \\
+           x_2 = 1/4
+        \end{cases}  \]
+          \[ \begin{cases}
+            2x_1 + x_2 = 1 \\
+             x_1 = x_2 
+        \end{cases} \Rightarrow
+        \begin{cases}
+            x_1 = 1/3 \\
+           x_2 = 1/3
+        \end{cases}  \]
+        But $(1/4, 1/4)$ does not satisfies the condition $2x_1 + x_2 \ge 1$, so we pick $x^* = (1/3, 1/3)$, hence $p^* =  1/3$.
+
+  \subsubsection*{(e) $ f_0(x_1, x_2) = x_1^2 + 9x_2^2$}     
+   \[ \begin{cases}
+             x_1^2 = 9x_2^2 \\
+            x_1 + 3x_2 = 1
+        \end{cases} \Rightarrow
+        \begin{cases}
+            x_1 = 3/6 \\
+           x_2 = 1/6
+        \end{cases}  \]
+          \[ \begin{cases}
+            2x_1 + x_2 = 1 \\
+             x_1^2 = 9x_2^2 
+        \end{cases} \Rightarrow
+        \begin{cases}
+            x_1 = 3/7 \\
+           x_2 = 1/7
+        \end{cases}  \]
+        But $(3/7, 1/7)$ does not satisfies the condition $x_1 + 3x_2 \ge 1$, so we pick $x^* = (3/6, 1/6)$, hence $p^* = 3/6+ 9*(1/6)^2 = 1/2$.
+        \begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=0.21\textheight,width=.8\linewidth]{d.png}
+  \caption{(d) $ f_0(x_1, x_2) = max \{x_1, x_2\}$}
+
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=0.21\textheight,width=.8\linewidth]{e.png}
+  \caption{(e) $ f_0(x_1, x_2) = x_1^2 + 9x_2^2$}
+
+\end{minipage}
+\end{figure}
+
+ \subsection*{4.3}   
+ \begin{proof}
+ From textbook example we know $\nabla f_0(x) = Px + q $, and: 
+ \[\begin{bmatrix}
+13 & 12 & -2 \\
+23& 17 & 6 \\
+-2 & 6 & 12
+\end{bmatrix} 
+\begin{bmatrix}
+1\\
+1/2 \\
+-1
+\end{bmatrix} + 
+\begin{bmatrix}
+-22\\ 
+-14.5 \\
+13
+\end{bmatrix} =
+\begin{bmatrix}
+-1\\
+0 \\
+2
+\end{bmatrix}\]
+Hence, optimality condition is 
+\[\nabla f_0(x^*)^T (y -x)  = \begin{bmatrix}
+-1 & 0 & 2
+\end{bmatrix}\begin{bmatrix}
+y_1 - x_1\\
+y_2 - x_2\\
+y_3 - x_3
+\end{bmatrix}= -1 (y_1 -1) + 0 (y_2-\frac{1}{2}) + 2 (y_3 +1) \ge 0 \]
+which can only be true when 
+\[
+ \begin{cases}
+            y_1 - 1 \le 0 \\
+           y_3 +1 \ge 0
+        \end{cases} \Rightarrow \forall -1 \le y_i \le 1 
+\]
+we showed that $x^* = (1,1/2,-1)$ is optimal.
+\end{proof}
+  \subsection*{4.7 }  
+  \subsubsection*{(a)}
+  \begin{itemize}
+  \item Domain of the objective function $\{x \in \dom f_0 \mid c^Tx + d >0 \}$ is convex since $f_0$ is convex.
+  \item Sublevel set $S_{\alpha} = \{ x \in \dom f_0 \mid f_0(x)/(c^Tx + d) \le \alpha\}$ is convex since  $c^Tx + d >0 $ for $f_0(x) \le \alpha (c^Tx + d)$.
+  \end{itemize}
+  hence this is a quasiconvex optimization.
+    \subsubsection*{(b)}
+From hint that $g_i$ is perspective of $f_i$, we have $g_i(y,t) = tf_i(y/t)$, we can transform the problem into \begin{equation}
+   \begin{array}{ll}
+    \mbox{minimize}   & tg_0(\frac{y}{t}) \\
+    \mbox{subject to} & tg_i(\frac{y}{t}) \le 0 \\
+    & ay = bt \\
+    & c^Ty + dt =1
+        \end{array}
+\end{equation}
+
+Let 
+\[\begin{cases}
+           t = \dfrac{1}{c^Tx + d} \\
+           y = xt = \dfrac{x}{c^Tx + d} 
+        \end{cases}\]
+        Hence with algebra: \begin{equation}
+  \begin{array}{ll}
+    \mbox{minimize}   &  f_0(x)/(c^Tx + d) \\
+    \mbox{subject to} & f_i(x) \le 0, \, i = 1,\dots ,m\\
+    & Ax = b
+        \end{array}
+ \end{equation}
+
+  is equivalent to our problem (1), since 
+ \begin{itemize}
+
+  \item $ A x = b \Longleftrightarrow Ay= bt$
+  \item $f_0(x)/(c^Tx + d)  = \dfrac{f_0(y/t)}{1/t} \Longleftrightarrow  tg_0(\frac{y}{t}) $
+  \item   $f_i(x) \le 0 \Longleftrightarrow  tg_i(\frac{y}{t}) \le \, \mbox{for } t > 0 $
+ \item  $C^T y + dt = C^T\dfrac{x}{c^Tx + d)} + \dfrac{d}{c^Tx + d)}  = 1$
+ \end{itemize}
+ 
+
+\section*{Chapter 4, Linear optimization problems}	
+
+   \subsection*{4.8  }
+     \subsubsection*{(a)}
+\[    \begin{array}{ll}
+    \mbox{minimize}   & c^Tx \\
+    \mbox{subject to} & Ax = b
+        \end{array}
+  \]    
+  \begin{enumerate}
+	\item If it is infeasible, then $p^* = + \infty$
+	\item If it is feasible, by finding the spatial solution. Let $x   = \tilde{x}+ A^Tz = \tilde{x} + y$, then 
+	\[    \begin{array}{ll}
+    \mbox{minimize}   & c^Tx = c^T \tilde{x}  + c^Ty \\
+    \mbox{subject to} & y \in Null (A)
+        \end{array}
+  \]    
+   if $ c \perp Null (A) \Rightarrow c^Ty = 0$, then we have $c^Tx = c^T \tilde{x}  +  c^Ty = c^T \tilde{x}$, where $A\tilde{x} = b$, and $c = A^T\lambda$, then we have  \[p^* = c^T \tilde{x} = (A^T\lambda)^T(A^{-1}b) = \lambda^Tb \]
+	\item If it is feasible and if $c \cancel{\perp} Null (A)$, then it is unbounded from both direction, hence $p^* = -\infty$
+\end{enumerate}
+  
+  
+    \subsubsection*{(c)}
+    \[    \begin{array}{ll}
+    \mbox{minimize}   & c^Tx \\
+    \mbox{subject to} & l \preceq x  \preceq u 
+        \end{array}
+  \]    
+It is a box constrain:
+  \[    \begin{array}{ll}
+    \mbox{minimize}   & \sum_{i} c_i x_i \\
+    \mbox{subject to} &l_i \le x_i \le u_i \, \forall i
+        \end{array}
+  \]     
+  therefore 
+  \[ 
+ \begin{cases}
+       \mbox{if } c_i > 0 & \mbox{ lowerbound , hence } x^* = l_i,  p^* = c*l_i\\
+         \mbox{if } c_i = 0 & \mbox{ between lowerbound and upperbound, hence } x^* \in [l_i, u_i],   p^* = c*x^*\\
+           \mbox{if } c_i <  0 & \mbox{ upperbound  , hence } x^* = u_i,  p^* = c*u_i
+             \end{cases}
+             \]
+    \subsection*{4.11  } 
+      \subsubsection*{(b)}
+      \[    \begin{array}{ll}
+    \mbox{minimize}   & \|Ax - b\|_1 \\
+        \end{array}
+  \]    
+  The term can be rewritten as: $\|Ax - b\|_1 = \sum_{i = 1}^n |Ax_i -b_i|$, then setting $ |Ax_i -b_i| \le t_i$, we have 
+    \[    \begin{array}{ll}
+    \mbox{minimize}   &{\bf 1}^Tt \\
+        \mbox{subject to} & |Ax_i -b_i| \le t_i
+
+        \end{array}
+  \]    
+  that is:
+   \[    \begin{array}{ll}
+    \mbox{minimize}   &{\bf 1}^Tt \\
+        \mbox{subject to} & Ax_i -b_i\ge -t_i  \, \forall i\\
+         & Ax_i -b_i \le t_i  \, \forall i
+   \end{array}
+  \]    
+  Written in LP: 
+     \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   &{\bf 1}^Tt \\
+        \mbox{subject to} & Ax -b\succeq -t  \\\
+         & Ax-b \preceq t
+   \end{array} }
+  \]    
+  Since $-t_i \le a_i^Tx - b_i \le t_i \, \forall i  \Leftrightarrow \|a_i^Tx - b_i\| \le t_i \, \forall i $, it is easy to see the we can get the optimal solution at $\|a_i^Tx - b_i\|  = t_i$, hence we say the optimal solution of the norm and it's LP problem are the same.
+    \subsubsection*{(c)}
+    \[    \begin{array}{ll}
+    \mbox{minimize}   & \|Ax - b\|_1 \\
+    \mbox{subject to} & \|x\|_{\infty} \le 1
+        \end{array}
+  \]    
+  From part (b), we edit it a little, we can get 
+     \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   &{\bf 1}^Tt \\
+        \mbox{subject to} & Ax -b\succeq -t  \\
+         & Ax-b \preceq t \\
+          & -{\bf 1}  \le x \le {\bf 1}
+   \end{array} }
+  \]    
+  The same explanation as part (b) that  the optimal solution of the norm and it's LP problem are the same, with one more constrain $\|x\| \le 1$
+          \subsection*{4.12}
+          From this online lecture link: \href{http://www.ifp.illinois.edu/~angelia/ge330fall09_maxflowl20.pdf}{Slide 7}.\\
+Also problem stated that at each node we have conservation of flow: {\bf the total flow into node i along links
+and the external supply, minus the total flow out along the links, equals zero.}Hence \footnote{The set $E$ is the set of directed links $(i, j)$}
+          \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   & C = \sum_{i,j = 1}^{n}c_{ij}x_{ij}\\
+    \mbox{subject to} & b_i  + \sum_{\{l \mid (l,i) \in E\}}x_{li} - \sum_{\{j \mid (i,j) \in E\}}x_{ij}  = 0\\
+  & l_{ij} \le x_{ij} \le u_{ij}
+        \end{array} }
+  \]    
+       \subsection*{ 4.15 } 
+           \subsubsection*{(a)}
+           Since $ \{x_i \mid x_i \in \{0,1\}, \, i = 1,2,\dots, n\} \subseteq  \{x_i \mid 0 \le x_i \le 1, \, i = 1,2,\dots, n\}$, it is obvious that the optimal value of the LP relaxation is a lower bound on the optimal value of the Boolean LP.\\
+           If the LP relaxation is infeasible, { \bf then Boolean LP itself is infeasible}.
+    \subsubsection*{(b)}
+If LP relaxation has the same solution with  Boolean LP, { \bf then the optimal value of the LP relaxation is the optimal value of the Boolean LP}.
+   \section*{Chapter 4, Quadratic optimization problems}	
+ \subsection*{4.23}
+Adding auxiliary variable $z_i$ for $i = 1, 3, \dots, m$. Then with a bit of algebra, we got QCQP:
+       \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   & \sum_{i}^{m}z_i^2 \\
+    \mbox{subject to} & y_i^2 \le z_i,  \, i = 1, 3, \dots, m  \\
+    & y_i  = a_i^Tx - b_i,  \, i = 1, 3, \dots, m 
+            \end{array} }
+            \]
+
+   \section*{Chapter 4, Semidefinite programming and conic form problems}	
+\subsection*{4.40 }
+          \subsubsection*{(c)}
+          This one is similar to Matrix norm minimization example on page 169, and Example 3.5 on page 76\footnote{Schur complement condition for positive semi-definiteness of a block matrix $ \begin{bmatrix}
+A & B\\
+B^T & C
+\end{bmatrix}  \ge {\bf 0}, \, C \ge {\bf 0} \Rightarrow A - BC^{-1}B^T \ge {\bf 0}$}, that 
+          \[ {\bf epi} f  = \{(x,Y,t) \mid Y \succ 0, \, x^TY^{-1}x \le t\} = \{(x,Y,t) \mid 
+          \begin{bmatrix}
+Y & x\\
+x^T & t
+\end{bmatrix} \succeq 0, Y \succ 0
+          \}\]
+          Since we assume there exists at least one $x$ with $F(x) \succ 0$ therefore, the SPD form is 
+                   \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   & t\\
+    \mbox{subject to} &   \begin{bmatrix}
+F(x) & Ax + b\\
+(Ax + b)^T & t
+\end{bmatrix}  \succeq 0
+        \end{array} }
+  \]    
+   In the variable $x$ and  $t$,  where    $x, t \in \reals $.
+          \subsection*{4.43 } 
+            \subsubsection*{(a)}
+            \[\min \lambda_1(A(x))\]
+            From Linear Algebra, we know that : $\lambda$  is an eigenvalue of $A(x)$ if and only if $\lambda -t$ is an eigenvalue of $A(x) - t{\bf I}$, hence\footnote{Eigenvalue decomposition for SPD matrix:
+            $A \le tI \Longleftrightarrow Z^TAZ \le Z^TtIZ \Longleftrightarrow \sum_{i}\lambda_ia_i^2 \le t\sum_i a_i^2 \Longleftrightarrow  \lambda _{max} \le t$
+            } 
+            \[\lambda_1(A(x)) \le t \Longleftrightarrow A(x) - t{\bf I} \le 0\]
+                                Written  as SDP:
+               \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   & t\\
+    \mbox{subject to} & A(x)  \preceq  t{\bf I}
+        \end{array}
+         }
+  \]    
+    \subsubsection*{(b)}
+       \[\min \lambda_1 - \lambda_m(A(x))\]
+       On top of $\min \lambda_1(A(x))$ from part (a), we need $\max \lambda_t(A(x))$, which add one more condition
+                   \[\lambda_m(A(x)) \ge t \Longleftrightarrow A(x) - t{\bf I} \ge 0\]
+Hence
+
+                                \[  \boxed{  \begin{array}{ll}
+    \mbox{minimize}   & t_1 -  t_m\\
+    \mbox{subject to} & A(x)  \preceq  t_1{\bf I} \\
+       & A(x)  \succeq  t_m{\bf I} \\
+
+        \end{array}}
+  \]    
+
+
+       
+\end{document}
